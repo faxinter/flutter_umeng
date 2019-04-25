@@ -1,6 +1,7 @@
 package cn.fb.flutter_umeng;
 
 import android.app.Activity;
+import android.util.Log;
 
 import com.umeng.analytics.MobclickAgent;
 import com.umeng.commonsdk.UMConfigure;
@@ -51,8 +52,10 @@ public class FlutterUmengPlugin implements MethodCallHandler {
     }
 
     public void init(MethodCall call, Result result) {
+        Log.i("umeng", "init");
         UMConfigure.init(activity, (String) call.argument("key"), null, UMConfigure.DEVICE_TYPE_PHONE, null);
         if (BuildConfig.DEBUG) {
+            Log.i("umeng", "debug");
             UMConfigure.setLogEnabled(true);
         }
         UMConfigure.setEncryptEnabled(true);
