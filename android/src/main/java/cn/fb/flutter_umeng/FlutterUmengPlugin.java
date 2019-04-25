@@ -52,6 +52,9 @@ public class FlutterUmengPlugin implements MethodCallHandler {
 
     public void init(MethodCall call, Result result) {
         UMConfigure.init(activity, (String) call.argument("key"), null, UMConfigure.DEVICE_TYPE_PHONE, null);
+        if (BuildConfig.DEBUG) {
+            UMConfigure.setLogEnabled(true);
+        }
         UMConfigure.setEncryptEnabled(true);
         // 选用LEGACY_AUTO页面采集模式
         MobclickAgent.setPageCollectionMode(MobclickAgent.PageMode.LEGACY_MANUAL);
